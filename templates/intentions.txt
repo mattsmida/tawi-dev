@@ -1,0 +1,7 @@
+Write your intentions for today.
+Associate them with your devotions like this:
+    dev1, dev3) spend 30 minutes on crochet project
+Your devotions are:
+$YOUR_DEVOTIONS
+
+### Intetions for today:
