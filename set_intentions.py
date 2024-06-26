@@ -12,7 +12,7 @@ def make_tags(line, lp_idx, rp_idx):
 
 
 def main():
-    with open('today.txt', 'r') as f:
+    with open('./intentions.md', 'r') as f:
         for line in f:
             lp_idx, rp_idx = line.find('('), line.find(')')
             if lp_idx > rp_idx or (lp_idx == -1 and rp_idx > 0):
