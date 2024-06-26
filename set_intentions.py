@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import subprocess
+import json
+from datetime import datetime
 
 
 def make_tags(line, lp_idx, rp_idx):
@@ -24,8 +26,14 @@ def main():
                 tags_str = make_tags(line, lp_idx, rp_idx)
                 description = line[rp_idx + 1:-1].strip()
                 # TODO: escape characters like apostrophe in command
-                command = f'task add {description} {tags_str}'
+                command = f'echo task add {description} {tags_str}'
                 subprocess.run(command, shell=True)
+
+    with open('./.tawi.dat', 'w') as f:
+        data = {}
+        set_time = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        data['set_time'] = set_time
+        f.write(json.dumps(data))
 
 
 if __name__ == "__main__":
