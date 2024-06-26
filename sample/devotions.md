@@ -17,4 +17,4 @@ Engage in language learning with a daily regimen focusing on mastering conversat
 ### Oneliner
 Read 50 books from different genres, expanding horizons through words
 ### Description
-Immerse yourself in the world of literature by experiencing diverse genres and authors, setting a goal to read and absorb knowledge from 50 impactful books by Q2 1993.
+Immerse yourself in the world of literature by experiencing diverse genres and authors, setting a goal to read and absorb knowledge from 50 impactful books by Q2 1993. (AIL4)
