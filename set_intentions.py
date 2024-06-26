@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import subprocess
 
 
@@ -13,12 +15,16 @@ def make_tags(line, lp_idx, rp_idx):
 
 def main():
     with open('./intentions.md', 'r') as f:
+        listen = False
         for line in f:
             lp_idx, rp_idx = line.find('('), line.find(')')
-            if lp_idx > rp_idx or (lp_idx == -1 and rp_idx > 0):
+            if "## Write below" in line:
+                listen = True
+            if listen and (lp_idx > rp_idx or (lp_idx == -1 and rp_idx > 0)):
                 tags_str = make_tags(line, lp_idx, rp_idx)
                 description = line[rp_idx + 1:-1].strip()
-                command = f'task add "{description}" {tags_str}'
+                # TODO: escape characters like apostrophe in command
+                command = f'task add {description} {tags_str}'
                 subprocess.run(command, shell=True)
 
 
