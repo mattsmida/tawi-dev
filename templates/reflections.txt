@@ -1,9 +1,3 @@
-# Reflection
 Reflect on what you did toward your devotions today.
-What was the quality of today? An integer from -2 to 2. ___
+What was the quality of today? An integer from -2 to 2.
 
-$DEVOTION_NAME
-$DEVOTION_ONELINER
-$DEVOTION_TASKS
-How was your effort in service of this devotion today, from -2 to 2? ___
-More to say? ___

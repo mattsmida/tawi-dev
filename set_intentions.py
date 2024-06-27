@@ -26,7 +26,7 @@ def main():
                 tags_str = make_tags(line, lp_idx, rp_idx)
                 description = line[rp_idx + 1:-1].strip()
                 # TODO: escape characters like apostrophe in command
-                command = f'echo task add {description} {tags_str}'
+                command = f'task add {description} {tags_str}'
                 subprocess.run(command, shell=True)
 
     with open('./.tawi.dat', 'w') as f:
