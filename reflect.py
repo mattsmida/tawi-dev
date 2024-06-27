@@ -12,7 +12,7 @@ REFLECT_QUESTION = "How was your effort in service of this devotion today?" \
                    + " From -2 to 2."
 REFLECT_OPENENDED = "More to say? \n"
 
-icons = {
+status_icons = {
     "completed": "✅",
     "deleted": "🗑",
     "pending": "❌"
@@ -27,11 +27,6 @@ def main():
     with open(TMP_REPORT_PATH, 'r') as f:
         tasks_str = f.read()
         all_tasks = json.loads(tasks_str)
-
-        # Filter the task export to tasks that were set within 5 seconds
-        # of set_intentions script running. That data is held in tawi.dat's
-        # "set_time" attribute.
-
         today, set_time = time_data['set_time'].split('T')
         today = int(today)
         set_time = int(set_time.strip('Z'))
@@ -64,21 +59,13 @@ def main():
         for line in fin:
             fout.write(line)
 
-        # Loop over all the devotions and write to the file
-        # Devotion name
-        # Devotion oneliner
-        # Devotion tasks
-        # ...
-        # How was your effort in service of this devotion today, from -2 to 2?
-        # More to say?
-
         for devotion in devotions:
             fout.write(f"## {devotion['name']}\n")
             for task in todays_tasks:
                 if devotion['shortcode'] in task['tags']:
-                    # fout.write(str(task) + '\n')
                     fout.write(
-                        f"  - {icons[task['status']]}: {task['description']}")
+                        f"  - {status_icons[task['status']]}: " +
+                        f"{task['description']}\n")
             fout.write('\n')
             fout.write(REFLECT_QUESTION)
             fout.write('\n')
