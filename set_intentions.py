@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import subprocess
 import json
+import re
 from datetime import datetime
 
 
@@ -24,7 +25,8 @@ def main():
             if listen and (lp_idx > rp_idx or (lp_idx == -1 and rp_idx > 0)):
                 tags_str = make_tags(line, lp_idx, rp_idx)
                 description = line[rp_idx + 1:-1].strip()
-                # TODO: escape characters like apostrophe in command
+                description = description.replace("\'", "\\\'")
+                description = description.replace("\"", "\\\"")
                 command = f'task add {description} {tags_str}'
                 subprocess.run(command, shell=True)
 
