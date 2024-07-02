@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
 import subprocess
-import re
+import tawi_utils
 
 
 def main():
-    devotions_path = './devotions.md'
-    devotions = []  # {"HCM": "Home Chef Mastery"}
-    with open(devotions_path, 'r') as f:
-        for line in f:
-            if re.search(r'^##\s.*', line):
-                shortcode = re.search(r'^##\s(.*):', line).group(1).lower()
-                name = re.search(r'^##\s.*:\s(.*)$', line).group(1)
-                devotions.append({'shortcode': shortcode, 'name': name})
+    devotions = tawi_utils.get_devotions()
 
     max_len_devotion_shortcode = max([len(d['shortcode']) for d in devotions])
     intentions_template_path = '../templates/intentions.txt'

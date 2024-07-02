@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import subprocess
 import json
-import re
 from datetime import datetime
+import tawi_utils
 
 TMP_REPORT_PATH = './tmp-report.json'
 REFLECTIONS_TEMPLATE_PATH = '../templates/reflections.txt'
@@ -39,15 +39,7 @@ def main():
             if task_day == today and abs(task_set_time - set_time) < tolerance:
                 todays_tasks.append(task)
 
-    # Get devotions TODO: combine this with same thing from new_intentions
-    devotions_path = './devotions.md'
-    devotions = []  # {"HCM": "Home Chef Mastery"}
-    with open(devotions_path, 'r') as f:
-        for line in f:
-            if re.search(r'^##\s.*', line):
-                shortcode = re.search(r'^##\s(.*):', line).group(1).lower()
-                name = re.search(r'^##\s.*:\s(.*)$', line).group(1)
-                devotions.append({'shortcode': shortcode, 'name': name})
+    devotions = tawi_utils.get_devotions()
 
     with open(REFLECTIONS_TEMPLATE_PATH, 'r') as fin, \
             open(REFLECTIONS_OUTPUT_PATH, 'w') as fout:
