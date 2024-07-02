@@ -14,9 +14,10 @@ Then you're ready.
 At the beginning of the day, go into `./yourname`.
 Run `../new_intentions.py`.
 Write your intentions.
-When done, run `../set_intentions.py`.
+When done, save and close, then run `../set_intentions.py`.
 
-Then live your day.
+Then do what you want to do.
 Check off your tasks in `taskwarrior` as you go.
-When it's over, from `./yourname`, run `../reflect.py`.
+(Or when it suits you.)
+At the day's end, from `./yourname`, run `../reflect.py`.
 There, you'll write about your day.
