@@ -5,7 +5,7 @@ from datetime import datetime
 import tawi_utils
 
 TMP_REPORT_PATH = './tmp-report.json'
-REFLECTIONS_TEMPLATE_PATH = '../templates/reflections.txt'
+REFLECTIONS_TEMPLATE_PATH = '../app/templates/reflections.txt'
 REFLECTIONS_OUTPUT_PATH = \
     f"./{datetime.today().strftime('%Y-%m-%d')}-reflections.md"
 REFLECT_QUESTION = "How was your effort in service of this devotion today?" \
@@ -54,7 +54,7 @@ def main():
         for devotion in devotions:
             fout.write(f"## {devotion['name']}\n")
             for task in todays_tasks:
-                if devotion['shortcode'] in task['tags']:
+                if task.get('tags') and devotion['shortcode'] in task['tags']:
                     fout.write(
                         f"  - {status_icons[task['status']]}: " +
                         f"{task['description']}\n")
