@@ -1,5 +1,6 @@
-matt/
 sample/.tawi.dat
 sample/20*
 sample/intentions.md
 sample/tmp-report.json
+src/test.py
+src/__pycache__/
