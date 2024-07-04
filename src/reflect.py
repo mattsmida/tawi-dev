@@ -5,7 +5,7 @@ from datetime import datetime
 import tawi_utils
 
 TMP_REPORT_PATH = './tmp-report.json'
-REFLECTIONS_TEMPLATE_PATH = '../app/templates/reflections.txt'
+REFLECTIONS_TEMPLATE_PATH = '../src/templates/reflections.txt'
 REFLECTIONS_OUTPUT_PATH = \
     f"./{datetime.today().strftime('%Y-%m-%d')}-reflections.md"
 REFLECT_QUESTION = "How was your effort in service of this devotion today?" \
