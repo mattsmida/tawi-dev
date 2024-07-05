@@ -4,3 +4,4 @@ sample/intentions.md
 sample/tmp-report.json
 src/test.py
 src/__pycache__/
+docker-command.txt
