@@ -7,9 +7,10 @@ import os
 
 DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
 TMP_REPORT_PATH = './.tmp-report.json'
+TODAY = datetime.today().strftime('%Y-%m-%d')
 REFLECTIONS_TEMPLATE_PATH = f'./{DISTRIBUTED}reflections.txt'
 REFLECTIONS_OUTPUT_PATH = \
-    f"./reflections/{datetime.today().strftime('%Y-%m-%d')}.md"
+    f"./reflections/{TODAY}.md"
 REFLECT_QUESTION = "*How was your effort in service of this devotion today?" \
                    + " From -2 to 2.*"
 REFLECT_OPENENDED = "*More to say?* \n"
@@ -22,6 +23,10 @@ status_icons = {
 
 
 def main():
+    if f'{TODAY}.md' in os.listdir('./reflections'):
+        subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}", shell=True)
+        return
+
     subprocess.run(f'task export > {TMP_REPORT_PATH}', shell=True)
     with open('.tawi.dat') as f:
         time_data = json.loads(f.read())
