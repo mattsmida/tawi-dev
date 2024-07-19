@@ -3,14 +3,16 @@ import subprocess
 import json
 from datetime import datetime
 import tawi_utils
+import os
 
-TMP_REPORT_PATH = './tmp-report.json'
-REFLECTIONS_TEMPLATE_PATH = '../templates/reflections.txt'
+DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
+TMP_REPORT_PATH = './.tmp-report.json'
+REFLECTIONS_TEMPLATE_PATH = f'./{DISTRIBUTED}reflections.txt'
 REFLECTIONS_OUTPUT_PATH = \
-    f"./{datetime.today().strftime('%Y-%m-%d')}-reflections.md"
-REFLECT_QUESTION = "How was your effort in service of this devotion today?" \
-                   + " From -2 to 2."
-REFLECT_OPENENDED = "More to say? \n"
+    f"./reflections/{datetime.today().strftime('%Y-%m-%d')}.md"
+REFLECT_QUESTION = "*How was your effort in service of this devotion today?" \
+                   + " From -2 to 2.*"
+REFLECT_OPENENDED = "*More to say?* \n"
 
 status_icons = {
     "completed": "✅",

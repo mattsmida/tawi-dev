@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import subprocess
 import json
+import os
 from datetime import datetime
 
 
@@ -28,6 +29,7 @@ def main():
                 description = description.replace("\"", "\\\"")
                 command = f'task add {description} {tags_str}'
                 subprocess.run(command, shell=True)
+    os.remove('./intentions.md')
 
     with open('./.tawi.dat', 'w') as f:
         data = {}

@@ -6,6 +6,8 @@ import reflect
 import tawi_utils
 import sys
 
+tawi_utils.setup_prereqs()
+
 try:
     func = sys.argv[1]  # new, set, reflect
 except IndexError:

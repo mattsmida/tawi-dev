@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 import subprocess
 import tawi_utils
+import os
+
+DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
 
 
 def main():
     devotions = tawi_utils.get_devotions()
 
     max_len_devotion_shortcode = max([len(d['shortcode']) for d in devotions])
-    intentions_template_path = '../templates/intentions.txt'
+    intentions_template_path = f'./{DISTRIBUTED}intentions.txt'
     intentions_output_path = './intentions.md'
     with open(intentions_template_path, 'r') as fin, \
             open(intentions_output_path, 'w') as fout:

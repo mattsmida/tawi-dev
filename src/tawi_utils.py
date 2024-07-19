@@ -1,6 +1,9 @@
 import re
+import os
 
-DEVOTIONS_PATH = './devotions.md'
+
+DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
+DEVOTIONS_PATH = f'./{DISTRIBUTED}devotions.md'
 
 
 def get_devotions():
@@ -17,3 +20,8 @@ def get_devotions():
 
 def display_help():
     print("Valid commands: new, set, reflect")
+
+
+def setup_prereqs():
+    if 'reflections' not in os.listdir():
+        os.mkdir('./reflections')

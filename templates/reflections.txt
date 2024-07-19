@@ -1,3 +1,0 @@
-Reflect on what you did toward your devotions today.
-What was the quality of today? An integer from -2 to 2.
-

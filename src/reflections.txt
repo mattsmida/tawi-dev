@@ -1,0 +1,2 @@
+*What was the quality of today? An integer from -2 to 2.*
+
