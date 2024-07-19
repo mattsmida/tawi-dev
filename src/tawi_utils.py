@@ -41,6 +41,7 @@ def check_valid_devotions():
     devotions = get_devotions()
     for devotion in devotions:
         if 'you should delete this example' in devotion['name']:
-            print("Write your devotions in devotions.md to use tawi.")
+            print("Write your devotions in devotions.md to use tawi. \
+                  Delete the example too.")
             return False
     return True
