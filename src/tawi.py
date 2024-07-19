@@ -7,6 +7,8 @@ import tawi_utils
 import sys
 
 tawi_utils.setup_prereqs()
+if not tawi_utils.check_valid_devotions():
+    exit(1)
 
 try:
     func = sys.argv[1]  # new, set, reflect
