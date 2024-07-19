@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 import subprocess
 import json
-from datetime import datetime
 import tawi_utils
 import os
 
 DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
 TMP_REPORT_PATH = './.tmp-report.json'
-TODAY = datetime.today().strftime('%Y-%m-%d')
 REFLECTIONS_TEMPLATE_PATH = f'./{DISTRIBUTED}reflections.txt'
-REFLECTIONS_OUTPUT_PATH = \
-    f"./reflections/{TODAY}.md"
+REFLECTIONS_OUTPUT_PATH = './reflections'
 REFLECT_QUESTION = "*How was your effort in service of this devotion today?" \
                    + " From -2 to 2.*"
 REFLECT_OPENENDED = "*More to say?* \n"
@@ -23,19 +20,25 @@ status_icons = {
 
 
 def main():
-    if f'{TODAY}.md' in os.listdir('./reflections'):
-        subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}", shell=True)
+    with open('.tawi.dat') as f:
+        time_data = json.loads(f.read())
+        today, set_time = time_data['set_time'].split('T')
+        today = int(today)
+        pretty_today = str(today)
+        pretty_today = pretty_today[0:4] \
+            + '-' + pretty_today[4:6] \
+            + '-' + pretty_today[6:]
+
+    if f'{pretty_today}.md' in os.listdir('./reflections'):
+        subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md",
+                       shell=True)
         return
 
     subprocess.run(f'task export > {TMP_REPORT_PATH}', shell=True)
-    with open('.tawi.dat') as f:
-        time_data = json.loads(f.read())
 
     with open(TMP_REPORT_PATH, 'r') as f:
         tasks_str = f.read()
         all_tasks = json.loads(tasks_str)
-        today, set_time = time_data['set_time'].split('T')
-        today = int(today)
         set_time = int(set_time.strip('Z'))
         todays_tasks = []
         tolerance = 5
@@ -49,11 +52,7 @@ def main():
     devotions = tawi_utils.get_devotions()
 
     with open(REFLECTIONS_TEMPLATE_PATH, 'r') as fin, \
-            open(REFLECTIONS_OUTPUT_PATH, 'w') as fout:
-        pretty_today = str(today)
-        pretty_today = pretty_today[0:4] \
-            + '-' + pretty_today[4:6] \
-            + '-' + pretty_today[6:]
+            open(f'{REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md', 'w') as fout:
         fout.write(f"# Reflection for {pretty_today} \n")
         for line in fin:
             fout.write(line)
@@ -71,7 +70,8 @@ def main():
             fout.write(REFLECT_OPENENDED)
             fout.write('\n\n')
 
-    subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}", shell=True)
+    subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md",
+                   shell=True)
 
 
 if __name__ == "__main__":
