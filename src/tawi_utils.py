@@ -5,6 +5,7 @@ import os
 DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
 DEVOTIONS_TEMPLATE_PATH = f'./{DISTRIBUTED}devotions-template.md'
 DEVOTIONS_PATH = './devotions.md'
+EDITOR = os.environ.get('EDITOR', 'nano')
 
 
 def get_devotions():
@@ -41,7 +42,9 @@ def check_valid_devotions():
     devotions = get_devotions()
     for devotion in devotions:
         if 'delete this example' in devotion['name']:
-            print("Write your devotions in devotions.md to use tawi. \
-                  Make sure to delete the example as well.")
+            print(
+                "Write your devotions in devotions.md to use tawi.",
+                "\nMake sure to delete the example as well."
+            )
             return False
     return True

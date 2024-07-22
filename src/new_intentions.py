@@ -4,6 +4,7 @@ import tawi_utils
 import os
 
 DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
+EDITOR = tawi_utils.EDITOR
 
 
 def main():
@@ -23,7 +24,7 @@ def main():
                     fout.write(f"- {d['shortcode']}: ".ljust(width) +
                                f"{d['name']}\n")
 
-    subprocess.run('vim +$ intentions.md', shell=True)
+    subprocess.run([EDITOR, 'intentions.md'])
 
 
 if __name__ == "__main__":

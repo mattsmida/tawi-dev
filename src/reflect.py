@@ -11,6 +11,7 @@ REFLECTIONS_OUTPUT_PATH = './reflections'
 REFLECT_QUESTION = "*How was your effort in service of this devotion today?" \
                    + " From -2 to 2.*"
 REFLECT_OPENENDED = "*More to say?* \n"
+EDITOR = tawi_utils.EDITOR
 
 status_icons = {
     "completed": "✅",
@@ -30,8 +31,8 @@ def main():
             + '-' + pretty_today[6:]
 
     if f'{pretty_today}.md' in os.listdir('./reflections'):
-        subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md",
-                       shell=True)
+        subprocess.run(
+            [EDITOR, f'{REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md'])
         return
 
     subprocess.run(f'task export > {TMP_REPORT_PATH}', shell=True)
@@ -70,8 +71,8 @@ def main():
             fout.write(REFLECT_OPENENDED)
             fout.write('\n\n')
 
-    subprocess.run(f"vim {REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md",
-                   shell=True)
+    subprocess.run(
+        [EDITOR, f'{REFLECTIONS_OUTPUT_PATH}/{pretty_today}.md'])
 
 
 if __name__ == "__main__":
