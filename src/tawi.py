@@ -9,7 +9,7 @@ import sys
 tawi_utils.setup_prereqs()
 
 try:
-    func = sys.argv[1]  # new, set, reflect
+    func = sys.argv[1]
     if func not in ['new', 'set', 'reflect']:
         func = ''
 except IndexError:
