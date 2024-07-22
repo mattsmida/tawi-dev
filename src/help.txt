@@ -1,0 +1,19 @@
+Usage:  tawi new            Write intentions for today
+        tawi set            After `new`, officially set today's intentions
+        tawi reflect        Reflect on today's progress
+
+        tawi devotions      Edit devotions (rarely)
+
+        tawi help           Display this help
+
+Decide on how to spend your time with tawi and taskwarrior. Here's how.
+
+First, write out two to eight things you're devoted to: `tawi devotions`
+You should keep this document updated, but it won't change often.
+Small adjustments perhaps once a week.
+Make bigger changes something like monthly or quarterly as needed.
+
+Each day, write your intentions (`tawi new`) connecting them to devotions.
+With `tawi set`, you make your intentions for the day official.
+Then use taskwarrior to check them off as you go.
+At the day's end (or next morning), reflect with `tawi reflect`.
