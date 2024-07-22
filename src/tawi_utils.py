@@ -1,9 +1,10 @@
 import re
 import os
-
+import subprocess
 
 DISTRIBUTED = '_internal/' if '_internal' in os.listdir() else ''
 DEVOTIONS_TEMPLATE_PATH = f'./{DISTRIBUTED}devotions-template.md'
+HELP_PATH = f'./{DISTRIBUTED}help.txt'
 DEVOTIONS_PATH = './devotions.md'
 EDITOR = os.environ.get('EDITOR', 'nano')
 
@@ -20,8 +21,15 @@ def get_devotions():
     return devotions
 
 
+def edit_devotions():
+    subprocess.run([EDITOR, DEVOTIONS_PATH])
+    return
+
+
 def display_help():
-    print("Valid commands: new, set, reflect")
+    text = subprocess.run(['cat', HELP_PATH], capture_output=True, text=True)
+    print(text.stdout)
+    return
 
 
 def setup_prereqs():
@@ -44,7 +52,7 @@ def check_valid_devotions():
         if 'delete this example' in devotion['name']:
             print(
                 "Write your devotions in devotions.md to use tawi.",
-                "\nMake sure to delete the example as well."
+                "\nMake sure to delete the example as well.", "\n"
             )
             return False
     return True

@@ -6,26 +6,43 @@ import reflect
 import tawi_utils
 import sys
 
-tawi_utils.setup_prereqs()
 
-try:
-    func = sys.argv[1]
-    if func not in ['new', 'set', 'reflect']:
-        func = ''
-except IndexError:
-    func = ''
+def main():
+    tawi_utils.setup_prereqs()
 
-if not tawi_utils.check_valid_devotions():
-    func = ''
+    try:
+        func = sys.argv[1]
+        if func not in ['new', 'set', 'reflect', 'devotions', 'help']:
+            print('Commands: new, set, reflect, devotions, help')
+            return
+    except IndexError:
+        print('Commands: new, set, reflect, devotions, help')
+        return
 
-if __name__ == "__main__" and func == "new":
-    new_intentions.main()
+    if __name__ == "__main__" and func == "devotions":
+        tawi_utils.edit_devotions()
+        return
 
-elif __name__ == "__main__" and func == "set":
-    set_intentions.main()
+    if not tawi_utils.check_valid_devotions():
+        tawi_utils.display_help()
+        return
 
-elif __name__ == "__main__" and func == "reflect":
-    reflect.main()
+    if __name__ == "__main__" and func == "new":
+        new_intentions.main()
+        return
 
-else:
-    tawi_utils.display_help()
+    elif __name__ == "__main__" and func == "set":
+        set_intentions.main()
+        return
+
+    elif __name__ == "__main__" and func == "reflect":
+        reflect.main()
+        return
+
+    elif __name__ == "__main__" and func == "help":
+        tawi_utils.display_help()
+        return
+
+
+if __name__ == "__main__":
+    main()
