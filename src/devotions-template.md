@@ -1,11 +1,13 @@
 # Devotions
 
-## HCM: Home Chef Mastery (you should delete this example)
+## ULAN: Understanding languages
 ### Oneliner
-Cook 100 International Recipes, mastering global cuisines.
+I am improving my understanding of foreign languages (delete this example)
 ### Description
-Dedicate time to enriching your culinary skills by experimenting with and mastering 100 authentic recipes from around the world.
-Delight in the flavors, aromas, and techniques from diverse cultures in your culinary exploration.
+    --- You must delete this example to proceed. ---
+In the near term, I will engage in language learning with a daily regimen focusing on mastering conversational Spanish.
+I am embarking on a journey to be able to communicate confidently with the Spanish-speaking community, making real connections that I previously couldn't.
+The aim is for a trip during which I will use these skills by my birthday this year.
 
 ## ____: NAME OF DEVOTION
 ### Oneliner
