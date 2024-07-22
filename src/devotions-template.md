@@ -1,8 +1,8 @@
 # Devotions
 
-## ULAN: Understanding languages
+## ULAN: Understanding languages (delete this example)
 ### Oneliner
-I am improving my understanding of foreign languages (delete this example)
+I am improving my understanding of foreign languages
 ### Description
     --- You must delete this example to proceed. ---
 In the near term, I will engage in language learning with a daily regimen focusing on mastering conversational Spanish.

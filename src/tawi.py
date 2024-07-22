@@ -10,8 +10,9 @@ tawi_utils.setup_prereqs()
 
 try:
     func = sys.argv[1]  # new, set, reflect
+    if func not in ['new', 'set', 'reflect']:
+        func = ''
 except IndexError:
-    tawi_utils.display_help()
     func = ''
 
 if not tawi_utils.check_valid_devotions():
@@ -25,3 +26,6 @@ elif __name__ == "__main__" and func == "set":
 
 elif __name__ == "__main__" and func == "reflect":
     reflect.main()
+
+else:
+    tawi_utils.display_help()
